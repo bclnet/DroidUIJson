@@ -13,7 +13,7 @@ public class State<Value> {
     public Value getWrappedValue() { return _location._value; }
     public void setWrappedValue(Value newValue) { _location._value = newValue; }
     
-    public Binding<Value> getProjectedValue() { return new Binding<Value>(() -> getWrappedValue(), (newValue) -> setWrappedValue(newValue)); }
+    //public Binding<Value> getProjectedValue() { return new Binding<Value>(() -> getWrappedValue(), (newValue) -> setWrappedValue(newValue)); }
     
     //public static func _makeProperty<V>(in buffer: inout _DynamicPropertyBuffer, container: _GraphValue<V>, fieldOffset: Int, inputs: inout _GraphInputs) { }
 }
