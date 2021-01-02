@@ -17,3 +17,4 @@ Thumbs.db.meta
 # Java
 .gradle/
 build/
+jniLibs/
