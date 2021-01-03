@@ -1,19 +1,19 @@
 package com.DroidUI;
 
-public class _VariadicView_Children {
+public class _VariadicView_Children implements View {
+	public View getBody() {
+		System.exit(0);
+		return null;
+	}
+
+	public static _ViewListOutputs _makeViewList(_GraphValue<_VariadicView_Children> view, _ViewListInputs inputs) {
+		System.exit(0);
+		return null;
+	}
 }
 
 /*
-extension _VariadicView_Children : View {
-    public var body: Never {
-        fatalError()
-    }
-    
-    public static func _makeViewList(view: _GraphValue<_VariadicView.Children>, inputs: _ViewListInputs) -> _ViewListOutputs {
-        fatalError()
-    }
-    public typealias Body = Never
-}
+
 
 extension _VariadicView_Children: RandomAccessCollection {
     public struct Element : View, Identifiable {

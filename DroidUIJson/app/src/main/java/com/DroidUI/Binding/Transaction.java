@@ -1,9 +1,9 @@
 package com.DroidUI;
 
 public class Transaction {
-    PropertyList plist;
+	PropertyList plist;
 
-    public Transaction() {
-        plist = new PropertyList();
-    }
+	public Transaction() {
+		plist = new PropertyList();
+	}
 }

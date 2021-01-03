@@ -1,5 +1,5 @@
 package com.DroidUI;
 
 public interface ButtonStyle {
-    Button makeBody(ButtonStyleConfiguration configuration);
+	Button makeBody(ButtonStyleConfiguration configuration);
 }

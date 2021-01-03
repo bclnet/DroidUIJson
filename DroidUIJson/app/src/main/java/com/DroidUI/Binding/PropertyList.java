@@ -1,15 +1,15 @@
 package com.DroidUI;
 
 class PropertyList {
-    Element elements;
+	Element elements;
 
-    PropertyList() {
-        elements = null;
-    }
+	PropertyList() {
+		elements = null;
+	}
 
-    class Tracker {
-    }
+	class Tracker {
+	}
 
-    class Element {
-    }
+	class Element {
+	}
 }
