@@ -204,7 +204,7 @@
     <Content Include="app\src\main\java\com\DroidUI\Views\_ShapeView.java" />
     <Content Include="app\src\main\java\com\DroidUI\Views\Spacer.java" />
     <Content Include="app\src\main\java\com\DroidUI\Views\Stepper.swift" />
-    <Content Include="app\src\main\java\com\DroidUI\Views\Text.swift" />
+    <Content Include="app\src\main\java\com\DroidUI\Views\Text.java" />
     <Content Include="app\src\main\java\com\DroidUI\Views\TupleView.java" />
     <Content Include="app\src\main\java\com\DroidUI\Views\View.java" />
     <Content Include="app\src\main\java\com\DroidUI\Views\VStack.java" />
