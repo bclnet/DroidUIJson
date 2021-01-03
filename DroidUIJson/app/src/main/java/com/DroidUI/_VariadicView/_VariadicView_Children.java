@@ -13,8 +13,6 @@ public class _VariadicView_Children implements View {
 }
 
 /*
-
-
 extension _VariadicView_Children: RandomAccessCollection {
     public struct Element : View, Identifiable {
         public var body: Never

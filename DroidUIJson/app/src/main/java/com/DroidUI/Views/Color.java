@@ -1,7 +1,7 @@
 package com.DroidUI;
 
 public class Color implements View {
-    public class AnyColorBox {
+    public static class AnyColorBox {
         @Override
         public int hashCode() { return this.hashCode(); }
 
@@ -30,7 +30,7 @@ public class Color implements View {
         accentColor,
     }
 
-    public class SystemColorType extends AnyColorBox {
+    public static class SystemColorType extends AnyColorBox {
         public SystemColor value;
     
         SystemColorType(SystemColor value) {
@@ -43,7 +43,7 @@ public class Color implements View {
         }
     }
 
-    public class DisplayP3 extends AnyColorBox {
+    public static class DisplayP3 extends AnyColorBox {
         public double red;
         public double green;
         public double blue;
@@ -57,7 +57,7 @@ public class Color implements View {
         }
     }
 
-    public class _Resolved extends AnyColorBox {
+    public static class _Resolved extends AnyColorBox {
         public double linearRed;
         public double linearGreen;
         public double linearBlue;

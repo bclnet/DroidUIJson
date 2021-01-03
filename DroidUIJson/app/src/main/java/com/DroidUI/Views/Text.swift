@@ -1,42 +1,47 @@
 package com.DroidUI;
 
-public class AnyTextStorage<Storage: StringProtocol> {
-    public var storage: Storage
+public class Text implements View {
+public class AnyTextStorage<Storage> {
+    public Storage storage;
     
-    internal init(storage: Storage) {
-        self.storage = storage
+    AnyTextStorage(Storage storage) {
+        this.storage = storage;
     }
 }
 
 public class AnyTextModifier {
-    init() {
-    }
 }
 
-public struct Text: View, Equatable {
-    public typealias Body = Never
-    public var _storage: Storage
-    public var _modifiers: [Text.Modifier] = [Modifier]()
+    public Storage _storage;
+    public Modifier[] _modifiers;
     
-    public enum Storage: Equatable {
-        public static func == (lhs: Text.Storage, rhs: Text.Storage) -> Bool {
-            switch (lhs, rhs) {
-            case (.verbatim(let contentA), .verbatim(let contentB)):
-                return contentA == contentB
-            case (.anyTextStorage(let contentA), .anyTextStorage(let contentB)):
-                return contentA.storage == contentB.storage
-            default:
-                return false
-            }
+    enum StorageType {
+    verbatim,
+    anyTextStorage,
+    }
+    public static class Storage {
+        StorageType Type;
+        String verbatim;
+        AnyTextStorage<String> anyTextStorage;
+
+              @Override
+        public boolean equals(Object o) {
+            if (!(o instanceof Storage)) return false;
+            Storage s = (Storage)o;
+            return this.Type == StorageType.verbatim && o.Type == StorageType.verbatim ? this.verbatim.equals(s.verbatim) ::
+                this.Type == StorageType.anyTextStorage && o.Type == StorageType.anyTextStorage ? this.anyTextStorage.Storage.equals(s.anyTextStorage.Storage) ::
+                false;
         }
-        
-        case verbatim(String)
-        case anyTextStorage(AnyTextStorage<String>)
     }
     
-    public enum Modifier: Equatable {
-        case color(Color?)
-        case font(Font?)
+        enum ModifierType {
+    verbatim,
+    anyTextStorage,
+    }
+    public static class Modifier {
+        StorageType Type;
+        Color color;
+        Font font;
         // case italic
         // case weight(Font.Weight?)
         // case kerning(CGFloat)
@@ -44,38 +49,49 @@ public struct Text: View, Equatable {
         // case baseline(CGFloat)
         // case rounded
         // case anyTextModifier(AnyTextModifier)
-        public static func == (lhs: Text.Modifier, rhs: Text.Modifier) -> Bool {
-            switch (lhs, rhs) {
-            case (.color(let colorA), .color(let colorB)):
-                return colorA == colorB
-            case (.font(let fontA), .font(let fontB)):
-                return fontA == fontB
-            default:
-                return false
-            }
+
+                      @Override
+        public boolean equals(Object o) {
+            if (!(o instanceof Modifier)) return false;
+            Modifier s = (Modifier)o;
+            return this.Type == ModifierType.color && o.Type == ModifierType.color ? this.color.equals(s.color) ::
+                this.Type == ModifierType.font && o.Type == ModifierType.font ? this.font.equals(s.font) ::
+                false;
         }
     }
     
-    public init(verbatim content: String) {
-        self._storage = .verbatim(content)
+    public Text(String verbatim) {
+        this._storage = new Storage(StorageType.verbatim);
+        this._storage.verbatim = content;
+        this._modifiers = new Modifier[];
+    }
+    /*
+    public Text(String content) {
+        this._storage = new Storage(StorageType.anyTextStorage);
+        this._storage.anyTextStorage = new AnyTextStorage<String>(content);
+    }
+    */
+    public Text(LocalizedStringKey key) { this(key, null, null, null); }
+    public Text(LocalizedStringKey key, String tableName) { this(key, tableName, null, null); }
+    public Text(LocalizedStringKey key, Bundle bundle) { this(key, null, bundle, null); }
+    public Text(LocalizedStringKey key, String tableName, Bundle bundle) { this(key, tableName, bundle, null); }
+    public Text(LocalizedStringKey key, String tableName, Bundle bundle, String comment) {
+        this._storage = new Storage(StorageType.anyTextStorage);
+        this._storage.anyTextStorage = new AnyTextStorage<String>(key.key);
+    }
+    private Text(String verbatim, Modifier[] modifiers) {
+        this._storage = new Storage(StorageType.verbatim);
+        this._storage.verbatim = verbatim;
+        this._modifiers = modifiers;
     }
     
-    public init<S>(_ content: S) where S: StringProtocol {
-        self._storage = .anyTextStorage(AnyTextStorage<String>(storage: String(content)))
-    }
-    
-    public init(_ key: LocalizedStringKey, tableName: String? = nil, bundle: Bundle? = nil, comment: StaticString? = nil) {
-        self._storage = .anyTextStorage(AnyTextStorage<String>(storage: key.key))
-    }
-    
-    private init(verbatim content: String, modifiers: [Modifier] = []) {
-        self._storage = .verbatim(content)
-        self._modifiers = modifiers
-    }
-    
-    public static func == (lhs: Text, rhs: Text) -> Bool {
-        return lhs._storage == rhs._storage && lhs._modifiers == rhs._modifiers
-    }
+        @Override
+        public boolean equals(Object o) {
+            if (!(o instanceof Text)) return false;
+            Text s = (Text)o;
+            return this._storage.equals(s._storage) &&
+                this._modifiers.equals(s._modifiers);
+        }
 }
 
 extension Text {

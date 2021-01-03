@@ -1,8 +1,8 @@
 package com.DroidUI;
 
-public interface EnvironmentKey {
+class FontEnvironmentKey implements EnvironmentKey {
 	static String getKey() {
-		return null;
+		return "font";
 	}
 
 	static Object getDefaultValue() {

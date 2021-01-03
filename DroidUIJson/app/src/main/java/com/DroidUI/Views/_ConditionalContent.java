@@ -24,12 +24,12 @@ public class _ConditionalContent<TrueContent extends View, FalseContent extends 
 		}
 	}
 
-	public void setTrueContent(TrueContent trueContent) {
+	void setTrueContent(TrueContent trueContent) {
 		_storage = new Storage(StorageType.trueContent);
 		_storage.trueContent = trueContent;
 	}
 
-	public void setFalseContent(FalseContent falseContent) {
+	void setFalseContent(FalseContent falseContent) {
 		_storage = new Storage(StorageType.falseContent);
 		_storage.falseContent = falseContent;
 	}
